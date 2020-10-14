@@ -1,0 +1,48 @@
+<idea-plugin>
+    <id>com.seiphon</id>
+    <name>Code Assistance</name>
+    <vendor email="871358932t@qq.com" url="http://www.seiphon.com">Seiphon</vendor>
+
+    <description><![CDATA[
+    This is the first version of Code Assistance.<br>
+    <em>used to make coding more easy.</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <preloadingActivity implementation="com.seiphon.plugin.acitivity.BladeLanguageServerPreloadingActivity" id="com.liferay.ide.idea.language.lsp.BladeLanguageServerPreloadingActivity" />
+        <completion.contributor implementationClass="com.seiphon.plugin.contributor.LiferayCompletionContributor" id="LiferayCompletionContributor" language="any"/>
+        <externalAnnotator id="LSPAnnotator" language="Properties" implementationClass="org.wso2.lsp4intellij.contributors.annotator.LSPAnnotator"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action
+                id="StackOverflow.AskQuestion.ToolsMenu"
+                class="com.seiphon.plugin.actions.AskQuestionAction"
+                text="Ask Question on Stack Overflow"
+                description="Ask a Question on Stack Overflow">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action
+                id="StackOverflow.Search.Editor"
+                class="com.seiphon.plugin.actions.SearchAction"
+                text="Search on Stack Overflow"
+                description="Search on Stack Overflow">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action
+                id="StackOverflow.Search.Console"
+                class="com.seiphon.plugin.actions.SearchAction"
+                text="Search on Stack Overflow"
+                description="Search on Stack Overflow">
+            <add-to-group group-id="ConsoleEditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
